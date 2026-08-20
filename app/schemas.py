@@ -17,6 +17,7 @@ class TenderUpdate(BaseModel):
     """Обновление тендера"""
     status: TenderStatus = Field(..., description="Новый статус тендера")
     reason: str = Field(..., min_length=2, max_length=255)
+    changed_by: uuid.UUID
 
 
 # ответы тендера
