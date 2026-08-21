@@ -9,8 +9,17 @@ from app.database import get_db
 app = FastAPI()
 
 
+@app.get("/")
+def root():
+    return {
+        "message": "Tender Tracker API",
+        "docs": "/docs",
+        "redoc": "/redoc"
+    }
+
+
 # обработка пост
-@app.post("/tenders")
+@app.post("/tenders", status_code=201)
 def tender_post(tc: TenderCreate, db: Session = Depends(get_db)):
     """Оброботчик POST"""
     tender = create_tender(db, tc)

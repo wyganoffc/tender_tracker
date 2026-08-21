@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from config import settings
+from app.config import settings
 
 # создание ссылки и сессии
 engine = create_engine(settings.DATABASE_URL)
@@ -13,7 +13,5 @@ def get_db():
     db = SessionLocal()
     try:
         yield db
-    except Exception as e:
-        print(e)
     finally:
         db.close()

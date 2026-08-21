@@ -1,8 +1,8 @@
-import pydantic.env_settings as pd
+from pydantic_settings import BaseSettings
 
 
 # класс настроек с шаблоном ссылки, ключа и класса подключения к .env
-class Settings(pd.BaseSettings):
+class Settings(BaseSettings):
     """Шаблон настроек"""
     DATABASE_URL: str
     SECRET_KEY: str
