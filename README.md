@@ -35,7 +35,7 @@
 
 ### Разрешённые переходы:
 
-```text
+
 draft → active, cancelled
 active → won, lost, cancelled
 won → (финальный статус)
@@ -75,7 +75,6 @@ cancelled → (финальный статус)
 
 ### Слои приложения
 
-```text
 ┌─────────────────────────────────────────────────────────────┐
 │                      HTTP Layer (FastAPI)                   │
 │  ┌─────────────────────────────────────────────────────┐    │
@@ -105,7 +104,6 @@ cancelled → (финальный статус)
 
 ### Структура базы данных
 
-```text
 Таблица: tenders
 ├── id (UUID, PRIMARY KEY)
 ├── title (VARCHAR(255), NOT NULL)
@@ -126,7 +124,6 @@ cancelled → (финальный статус)
 
 ## 📂 Структура проекта
 
-```text
 tender-tracker/
 ├── app/                          # Основной код приложения
 │   ├── __init__.py
@@ -176,7 +173,6 @@ tender-tracker/
 
 ### Запуск через Docker (рекомендуется)
 
-```bash
 # 1. Клонировать репозиторий
 git clone https://github.com/wyganoffc/tender_tracker.git
 cd tender-tracker
@@ -199,7 +195,6 @@ curl http://localhost:8000/
 
 ### Локальный запуск (без Docker)
 
-```bash
 # 1. Установить зависимости
 pip install -r requirements.txt
 
@@ -237,7 +232,6 @@ uvicorn app.routers:app --reload
 
 ### 1. Создание тендера
 
-```bash
 curl -X POST http://localhost:8000/tenders \
   -H "Content-Type: application/json" \
   -d '{
@@ -275,7 +269,6 @@ json
 
 ### 3. Обновление статуса
 
-```bash
 curl -X PATCH http://localhost:8000/tenders/123e4567-e89b-12d3-a456-426614174000/status \
   -H "Content-Type: application/json" \
   -d '{
@@ -315,7 +308,6 @@ json
 
 ## 🧪 Тестирование
 
-```bash
 # Запустить все тесты
 pytest tests/ -v
 
@@ -326,7 +318,6 @@ pytest tests/ --cov=app --cov-report=html
 pytest tests/test_api.py::test_create_tender -v
 Результат:
 
-text
 ============================= test session starts ==============================
 collected 9 items
 
@@ -354,7 +345,6 @@ app/models.py	90%
 
 ### Docker
 
-```bash
 docker-compose up -d             # Запустить в фоне
 docker-compose up                # Запустить с логами
 docker-compose down              # Остановить
@@ -386,7 +376,6 @@ mypy app/                        # Проверить типы
 
 ### Переменные окружения в Docker
 
-```env
 # .env
 DATABASE_URL=postgresql://postgres:postgres@db:5432/tenders
 SECRET_KEY=your-secret-key
