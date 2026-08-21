@@ -1,0 +1,24 @@
+tender_app  | INFO:     Will watch for changes in these directories: ['/app']
+tender_db   | 
+tender_db   | PostgreSQL Database directory appears to contain a database; Skipping initialization
+tender_db   | 
+tender_db   | 2026-08-21 09:19:12.465 UTC [1] LOG:  starting PostgreSQL 15.19 (Debian 15.19-1.pgdg13+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit
+tender_db   | 2026-08-21 09:19:12.465 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+tender_db   | 2026-08-21 09:19:12.465 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+tender_app  | INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+tender_app  | INFO:     Started reloader process [1] using StatReload
+tender_app  | INFO:     Started server process [8]
+tender_db   | 2026-08-21 09:19:12.472 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+tender_db   | 2026-08-21 09:19:12.480 UTC [29] LOG:  database system was shut down at 2026-08-21 09:17:49 UTC
+tender_app  | INFO:     Waiting for application startup.
+tender_app  | INFO:     Application startup complete.
+tender_app  | INFO:     172.18.0.1:58246 - "GET / HTTP/1.1" 200 OK
+tender_db   | 2026-08-21 09:19:12.487 UTC [1] LOG:  database system is ready to accept connections
+tender_app  | INFO:     172.18.0.1:36796 - "POST /tenders HTTP/1.1" 201 Created
+tender_app  | INFO:     172.18.0.1:43970 - "POST /tenders HTTP/1.1" 201 Created
+tender_db   | 2026-08-21 09:24:12.469 UTC [27] LOG:  checkpoint starting: time
+tender_db   | 2026-08-21 09:24:13.724 UTC [27] LOG:  checkpoint complete: wrote 15 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=1.211 s, sync=0.021 s, total=1.255 s; sync files=11, longest=0.007 s, average=0.002 s; distance=1 kB, estimate=1 kB
+tender_app  | INFO:     172.18.0.1:56016 - "GET /tenders/ea05be01-9df3-4203-ba3d-cd42755e9113 HTTP/1.1" 200 OK
+tender_app  | INFO:     172.18.0.1:33160 - "PATCH /tenders/ea05be01-9df3-4203-ba3d-cd42755e9113/status HTTP/1.1" 200 OK
+tender_app  | INFO:     172.18.0.1:57534 - "GET /tenders/ea05be01-9df3-4203-ba3d-cd42755e9113/history HTTP/1.1" 200 OK
+tender_app  | INFO:     172.18.0.1:34142 - "GET /tenders/00000000-0000-0000-0000-000000000000 HTTP/1.1" 404 Not Found
