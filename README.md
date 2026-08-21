@@ -74,6 +74,7 @@ cancelled → (финальный статус)
 ## 📁 Архитектура проекта
 
 ### Слои приложения
+```text
 
 ┌─────────────────────────────────────────────────────────────┐
 │                      HTTP Layer (FastAPI)                   │
@@ -101,9 +102,10 @@ cancelled → (финальный статус)
 │  │  PostgreSQL         (База данных)                   │    │
 │  └─────────────────────────────────────────────────────┘    │
 └─────────────────────────────────────────────────────────────┘
-
+```
 ### Структура базы данных
 
+```text
 Таблица: tenders
 ├── id (UUID, PRIMARY KEY)
 ├── title (VARCHAR(255), NOT NULL)
@@ -121,9 +123,9 @@ cancelled → (финальный статус)
 ├── changed_by (UUID, NOT NULL)
 ├── reason (TEXT, NOT NULL)
 └── changed_at (TIMESTAMP WITH TIME ZONE)
-
+```
 ## 📂 Структура проекта
-
+```text
 tender-tracker/
 ├── app/                          # Основной код приложения
 │   ├── __init__.py
@@ -162,7 +164,7 @@ tender-tracker/
 ├── README.md                     # Документация
 ├── LICENSE                       # Лицензия MIT
 └── alembic.ini                   # Настройки Alembic
-
+```
 ## 🚀 Быстрый старт
 
 ### Предварительные требования
@@ -172,7 +174,7 @@ tender-tracker/
 - **PostgreSQL** 15+ (для локального запуска)
 
 ### Запуск через Docker (рекомендуется)
-
+```text
 # 1. Клонировать репозиторий
 git clone https://github.com/wyganoffc/tender_tracker.git
 cd tender-tracker
@@ -192,9 +194,9 @@ curl http://localhost:8000/
 
 # 6. Открыть документацию в браузере
 # http://localhost:8000/docs
-
+```
 ### Локальный запуск (без Docker)
-
+```text
 # 1. Установить зависимости
 pip install -r requirements.txt
 
@@ -213,7 +215,7 @@ uvicorn app.routers:app --reload
 
 # 5. Открыть Swagger
 # http://localhost:8000/docs
-
+```
 
 ## 📡 API Эндпоинты
 
@@ -231,7 +233,7 @@ uvicorn app.routers:app --reload
 ## 📝 Примеры запросов
 
 ### 1. Создание тендера
-
+```bash
 curl -X POST http://localhost:8000/tenders \
   -H "Content-Type: application/json" \
   -d '{
@@ -239,9 +241,10 @@ curl -X POST http://localhost:8000/tenders \
     "description": "Веб-приложение на Python с интеграцией ЕСИА",
     "created_by": "550e8400-e29b-41d4-a716-446655440000"
   }'
+  ```
 Ответ:
 
-json
+```json
 {
   "id": "123e4567-e89b-12d3-a456-426614174000",
   "title": "Разработка CRM для госорганов",
@@ -251,12 +254,14 @@ json
   "created_at": "2024-01-15T10:30:00Z",
   "updated_at": "2024-01-15T10:30:00Z"
 }
+```
 2. Получение тендера
-bash
+```bash
 curl http://localhost:8000/tenders/123e4567-e89b-12d3-a456-426614174000
+```
 Ответ (200 OK):
 
-json
+```json
 {
   "id": "123e4567-e89b-12d3-a456-426614174000",
   "title": "Разработка CRM для госорганов",
@@ -266,9 +271,9 @@ json
   "created_at": "2024-01-15T10:30:00Z",
   "updated_at": "2024-01-15T10:30:00Z"
 }
-
+```
 ### 3. Обновление статуса
-
+```bash
 curl -X PATCH http://localhost:8000/tenders/123e4567-e89b-12d3-a456-426614174000/status \
   -H "Content-Type: application/json" \
   -d '{
@@ -276,9 +281,10 @@ curl -X PATCH http://localhost:8000/tenders/123e4567-e89b-12d3-a456-426614174000
     "reason": "Проект согласован с заказчиком",
     "changed_by": "550e8400-e29b-41d4-a716-446655440000"
   }'
+  ```
 Ответ (200 OK):
 
-json
+```json
 {
   "id": "123e4567-e89b-12d3-a456-426614174000",
   "title": "Разработка CRM для госорганов",
@@ -288,12 +294,14 @@ json
   "created_at": "2024-01-15T10:30:00Z",
   "updated_at": "2024-01-15T10:35:00Z"
 }
+```
 4. Получение истории
-bash
+```bash
 curl http://localhost:8000/tenders/123e4567-e89b-12d3-a456-426614174000/history
+```
 Ответ (200 OK):
 
-json
+```json
 [
   {
     "id": "789e4567-e89b-12d3-a456-426614174000",
@@ -305,9 +313,10 @@ json
     "changed_at": "2024-01-15T10:35:00Z"
   }
 ]
+```
 
 ## 🧪 Тестирование
-
+```text
 # Запустить все тесты
 pytest tests/ -v
 
@@ -340,11 +349,11 @@ app/status_machine.py	100%
 app/schemas.py	100%
 app/models.py	90%
 Общее	95%
-
+```
 ## 📦 Команды для разработки
 
 ### Docker
-
+```text
 docker-compose up -d             # Запустить в фоне
 docker-compose up                # Запустить с логами
 docker-compose down              # Остановить
@@ -366,7 +375,7 @@ bash
 flake8 app/ tests/               # Проверить стиль
 black app/ tests/                # Отформатировать код
 mypy app/                        # Проверить типы
-
+```
 ## 🐳 Docker-стек
 
 | Сервис | Контейнер | Порт | Назначение |
@@ -377,8 +386,10 @@ mypy app/                        # Проверить типы
 ### Переменные окружения в Docker
 
 # .env
+```text
 DATABASE_URL=postgresql://postgres:postgres@db:5432/tenders
 SECRET_KEY=your-secret-key
+```
 🔒 Безопасность
 Реализовано
 ✅ Переменные окружения для секретов (.env)
@@ -407,7 +418,7 @@ yaml
 name: CI
 
 on: [push, pull_request]
-
+```text
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -420,7 +431,7 @@ jobs:
       - run: flake8 app/ tests/
       - run: black --check app/ tests/
       - run: pytest tests/ --cov=app
-
+```
 
 ## 🤝 Как внести вклад
 
